@@ -1,14 +1,15 @@
 import {useContext} from 'react';
 import {TodoContext} from '../contexts/TodoContext';
+import './TodoList.css';
 
 const TodoList = () => {
   const {state, dispatch} = useContext(TodoContext);
   return (
-    <div>
+    <div className={'todo-group'}>
       <div>This is the TodoList Component.</div>
       {
         state.map(todo => {
-          return <div>{todo.text}</div>
+          return <div className={'todo-item'}>{todo.text}</div>
         })
       }
     </div>
