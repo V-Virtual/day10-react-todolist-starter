@@ -19,13 +19,35 @@ const TodoList = () => {
     }
   }
 
+  function deleteTodo (id, e) {
+    e.stopPropagation();
+    const action = {type: 'DELETE', id: id};
+    dispatch(action);
+  }
+
   return (
     <div className={'todo-group'}>
-      <div>This is the TodoList Component.</div>
+      <div className='todo-title'>Todo List</div>
       {
-        state.map(({id, text, done}) => {
-          return <div className={`todo-item ${done ? 'done' : ''}`}
-                      onClick={() => toggleDone(id)}>{text}</div>
+        state.map(({
+                     id,
+                     text,
+                     done
+                   }) => {
+          return (
+            <div className='todo-row'>
+              <div className={`todo-item ${done ? 'done' : ''}`}
+                   onClick={() => toggleDone(id)}>
+                {text}
+              </div>
+              <button
+                className='delete-button'
+                onClick={(e) => deleteTodo(id, e)}
+              >
+                X
+              </button>
+            </div>
+          )
         })
       }
       <input type='text'

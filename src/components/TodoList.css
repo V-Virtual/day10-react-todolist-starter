@@ -1,8 +1,15 @@
+.todo-title {
+    margin-top: 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
 .todo-item {
     width: 400px;
     border: 1px solid black;
     padding: 5px;
-    margin: 8px auto;
+    margin: 5px auto;
     height: 20px;
     display: flex;
     align-items: center;
@@ -21,6 +28,7 @@
     padding: 5px;
     border: 1px solid black;
     height: 20px;
+    margin: 5px auto;
 }
 
 .todo-add-button {
@@ -38,4 +46,21 @@
     background-color: #338ad9;
     cursor: not-allowed;
     opacity: 0.6;
+}
+
+.todo-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 400px;
+}
+
+.delete-button {
+    background-color: #b0b0b0;
+    color: black;
+    border: none;
+    width: 25px;
+    height: 30px;
+    cursor: pointer;
+    margin-left: 10px;
 }
