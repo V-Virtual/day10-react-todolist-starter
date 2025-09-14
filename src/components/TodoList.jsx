@@ -50,6 +50,13 @@ const TodoList = () => {
           )
         })
       }
+      {
+        state.length === 0 && (
+          <div className="todo-empty-info">
+            Add the things you need to do today...
+          </div>
+        )
+      }
       <input type='text'
              value={inputText}
              onChange={(e) => setInputText(e.target.value)}

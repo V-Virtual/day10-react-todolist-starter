@@ -18,7 +18,7 @@ export const todoReducer = (state, action) => {
         return todo;
       })
     case 'ADD':
-      const newId = Math.max(...state.map(todo => todo.id)) + 1;
+      const newId = state.length ? Math.max(...state.map(todo => todo.id)) + 1 : 1;
       return [
         ...state,
         {
