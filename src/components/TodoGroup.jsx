@@ -6,6 +6,7 @@ import {
 import {TodoContext} from '../contexts/TodoContext';
 import './TodoList.css';
 import {getTodos} from '../apis/api';
+import TodoGenerator from './TodoGenerator';
 
 const TodoGroup = () => {
   const {state, dispatch} = useContext(TodoContext);
@@ -20,14 +21,6 @@ const TodoGroup = () => {
   function toggleDone (id) {
     const action = {type: 'DONE', id: id};
     dispatch(action);
-  }
-
-  function addTodo () {
-    if (inputText.trim()) {
-      const action = {type: 'ADD', text: inputText};
-      dispatch(action);
-      setInputText('');
-    }
   }
 
   function deleteTodo (id, e) {
@@ -46,7 +39,7 @@ const TodoGroup = () => {
                      done
                    }) => {
           return (
-            <div className='todo-row'>
+            <div key={id} className='todo-row'>
               <div className={`todo-item ${done ? 'done' : ''}`}
                    onClick={() => toggleDone(id)}>
                 {text}
@@ -61,25 +54,7 @@ const TodoGroup = () => {
           )
         })
       }
-      {
-        state.length === 0 && (
-          <div className="todo-empty-info">
-            Add the things you need to do today...
-          </div>
-        )
-      }
-      <input type='text'
-             value={inputText}
-             onChange={(e) => setInputText(e.target.value)}
-             className={'todo-input'}
-      />
-      <button
-        onClick={addTodo}
-        className={'todo-add-button'}
-        disabled={!inputText.trim()}
-      >
-        add
-      </button>
+      <TodoGenerator/>
     </div>
   );
 }
