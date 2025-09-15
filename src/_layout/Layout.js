@@ -4,7 +4,8 @@ import { Outlet, NavLink } from 'react-router';
 import {
   HomeOutlined,
   QuestionCircleOutlined,
-  UnorderedListOutlined
+  UnorderedListOutlined,
+  CheckCircleOutlined
 } from '@ant-design/icons';
 
 const { Header, Content, Footer } = Layout;
@@ -19,6 +20,11 @@ const menuItems = [
     key: '2',
     label: <NavLink to="/todos">Todos</NavLink>,
     icon: <UnorderedListOutlined />
+  },
+  {
+    key: '4',
+    label: <NavLink to="/done">Done</NavLink>,
+    icon: <CheckCircleOutlined />
   },
   {
     key: '3',

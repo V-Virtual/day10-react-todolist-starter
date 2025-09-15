@@ -9,6 +9,7 @@ import {
   useParams
 } from 'react-router';
 import DefaultLayout from './_layout/Layout';
+import DonePage from "./components/DonePage";
 
 function ErrorPate () {
   return <h1>Error Page</h1>;
@@ -37,6 +38,9 @@ const routes = [
     }, {
       path: 'about',
       element: <h1>About Us</h1>,
+    }, {
+      path: 'done',
+      element: <DonePage/>,
     }]
   }
 ]
