@@ -10,9 +10,6 @@ import {
 } from 'react-router';
 import DefaultLayout from './_layout/Layout';
 
-import React from 'react';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-
 function ErrorPate () {
   return <h1>Error Page</h1>;
 }
