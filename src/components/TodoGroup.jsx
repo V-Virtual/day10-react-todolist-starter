@@ -54,11 +54,19 @@ const TodoGroup = () => {
 
   function handleEditFinish (values) {
     if (editingTodo) {
-      const action = {type: 'EDIT', id: editingTodo.id, text: values.note};
+      const action = {
+        type: 'EDIT',
+        id: editingTodo.id,
+        text: values.text,
+        done: values.done
+      };
       dispatch(action);
 
-      // 同时更新后端
-      const updatedTodo = {...editingTodo, text: values.note};
+      const updatedTodo = {
+        ...editingTodo,
+        text: values.text,
+        done: values.done
+      };
       updateTodos(editingTodo.id, updatedTodo).then(r => console.log(r.data));
     }
     setEditModalVisible(false);
@@ -86,7 +94,7 @@ const TodoGroup = () => {
                 {text}
               </div>
               <button
-                className='edit-button'
+                className='delete-button'
                 onClick={(e) => editTodo(id, e)}
               >
                 <EditOutlined/>

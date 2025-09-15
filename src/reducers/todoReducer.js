@@ -36,7 +36,8 @@ export const todoReducer = (state, action) => {
         if (todo.id === action.id) {
           return {
             ...todo,
-            text: action.text
+            text: action.text,
+            done: action.done !== undefined ? action.done : todo.done
           };
         }
         return todo;
