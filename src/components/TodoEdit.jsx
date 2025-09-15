@@ -68,6 +68,9 @@ const TodoEdit = ({ visible, onCancel, onFinish, initialValues = {} }) => {
             <Button htmlType="button" onClick={onReset}>
               Reset
             </Button>
+            <Button htmlType="button" onClick={onCancel}>
+              Cancel
+            </Button>
           </Space>
         </Form.Item>
       </Form>
@@ -76,4 +79,3 @@ const TodoEdit = ({ visible, onCancel, onFinish, initialValues = {} }) => {
 };
 
 export default TodoEdit;
-
