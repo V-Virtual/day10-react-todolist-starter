@@ -11,6 +11,7 @@ import {
   updateTodos
 } from '../apis/api';
 import TodoGenerator from './TodoGenerator';
+import {DeleteOutlined} from '@ant-design/icons';
 
 const TodoGroup = () => {
   const {state, dispatch} = useContext(TodoContext);
@@ -56,7 +57,7 @@ const TodoGroup = () => {
                 className='delete-button'
                 onClick={(e) => deleteTodo(id, e)}
               >
-                X
+                <DeleteOutlined />
               </button>
             </div>
           )

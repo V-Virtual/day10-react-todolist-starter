@@ -9,7 +9,7 @@
     border: 1px solid black;
     padding: 5px;
     margin: 5px auto;
-    height: 20px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,20 +23,20 @@
     justify-self: center;
     box-shadow: 0 4px 24px rgba(0,0,0,0.12);
     padding: 24px 24px 24px 24px;
-    margin: 60px auto;
+    margin: 5px auto;
 }
 
 .todo-input {
     width: 300px;
     padding: 5px;
     border: 1px solid black;
-    height: 20px;
+    height: 50px;
     margin: 5px auto;
 }
 
 .todo-add-button {
     width: 60px;
-    height: 30px;
+    height: 40px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -62,8 +62,8 @@
     background-color: #dcdbdb;
     color: black;
     border: 1px solid black;
-    width: 25px;
-    height: 30px;
+    width: 35px;
+    height: 40px;
     cursor: pointer;
     margin-left: 10px;
 }
