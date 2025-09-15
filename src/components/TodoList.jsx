@@ -1,10 +1,21 @@
-import {useContext, useState} from 'react';
+import {
+  useContext,
+  useEffect,
+  useState
+} from 'react';
 import {TodoContext} from '../contexts/TodoContext';
 import './TodoList.css';
+import {getTodos} from '../apis/api';
 
 const TodoList = () => {
   const {state, dispatch} = useContext(TodoContext);
   const [inputText, setInputText] = useState('');
+
+  useEffect(() => {
+    getTodos().then(response => {
+      dispatch({type: 'LOAD', todos: response.data});
+    })
+  }, []);
 
   function toggleDone (id) {
     const action = {type: 'DONE', id: id};
