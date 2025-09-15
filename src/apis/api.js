@@ -5,11 +5,17 @@ const instance = axios.create({
 })
 
 export const getTodos = async () => {
-  const response = await instance.get('/todos')
-  return response
+  return await instance.get('/todos')
 }
 
-export const addTodo = async (todo) => {
-  const response = await instance.post('/todos', todo)
-  return response
+export const addTodos = async (todo) => {
+  return await instance.post('/todos', todo)
+}
+
+export const updateTodos = async (id, todo) => {
+  return await instance.put(`/todos/${id}`, todo)
+}
+
+export const deleteTodos = async (id) => {
+  return await instance.delete(`/todos/${id}`)
 }

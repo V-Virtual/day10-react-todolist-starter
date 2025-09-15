@@ -5,6 +5,7 @@ import {
 } from 'react';
 import {TodoContext} from '../contexts/TodoContext';
 import './TodoList.css';
+import {addTodos} from '../apis/api';
 
 const TodoGenerator = () => {
   const {state, dispatch} = useContext(TodoContext);
@@ -12,6 +13,8 @@ const TodoGenerator = () => {
 
   function addTodo () {
     if (inputText.trim()) {
+      const todo = {text: inputText, done: false};
+      addTodos(todo).then(r => console.log(r.data));
       const action = {type: 'ADD', text: inputText};
       dispatch(action);
       setInputText('');

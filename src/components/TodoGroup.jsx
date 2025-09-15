@@ -5,7 +5,11 @@ import {
 } from 'react';
 import {TodoContext} from '../contexts/TodoContext';
 import './TodoList.css';
-import {getTodos} from '../apis/api';
+import {
+  deleteTodos,
+  getTodos,
+  updateTodos
+} from '../apis/api';
 import TodoGenerator from './TodoGenerator';
 
 const TodoGroup = () => {
@@ -19,11 +23,15 @@ const TodoGroup = () => {
   }, []);
 
   function toggleDone (id) {
+    const oldTodo = state.find(todo => todo.id === id);
+    const newTodo = {...oldTodo, done: !oldTodo.done};
+    updateTodos(id, newTodo).then(r => console.log(r.data));
     const action = {type: 'DONE', id: id};
     dispatch(action);
   }
 
   function deleteTodo (id, e) {
+    deleteTodos(id).then(r => console.log(r.data));
     e.stopPropagation();
     const action = {type: 'DELETE', id: id};
     dispatch(action);
