@@ -5,29 +5,13 @@ import { initialState, todoReducer } from "./reducers/todoReducer";
 import { TodoContext } from "./contexts/TodoContext";
 import {
   createBrowserRouter,
-  NavLink,
-  Outlet,
   RouterProvider,
   useParams
 } from 'react-router';
+import DefaultLayout from './_layout/Layout';
 
-function DefaultLayout() {
-  return <>
-    <header>
-      <nav>
-        <ul>
-          <li><NavLink to={'/'}>Home</NavLink></li>
-          <li><NavLink to={'/todos'}>Todo List</NavLink></li>
-          <li><NavLink to={'/about'}>About</NavLink></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <Outlet></Outlet>
-    </main>
-    <footer>footer copyright</footer>
-  </>
-}
+import React from 'react';
+import { Breadcrumb, Layout, Menu, theme } from 'antd';
 
 function ErrorPate () {
   return <h1>Error Page</h1>;
