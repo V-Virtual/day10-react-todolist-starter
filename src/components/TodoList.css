@@ -5,7 +5,7 @@
 }
 
 .todo-item {
-    width: 400px;
+    width: 700px;
     border: 1px solid black;
     padding: 5px;
     margin: 5px auto;
@@ -27,7 +27,7 @@
 }
 
 .todo-input {
-    width: 300px;
+    width: 500px;
     padding: 5px;
     border: 1px solid black;
     height: 50px;
@@ -55,7 +55,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 400px;
+    width: 700px;
 }
 
 .delete-button {

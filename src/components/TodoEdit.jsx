@@ -35,7 +35,7 @@ const TodoEdit = ({ visible, onCancel, onFinish, initialValues = {} }) => {
 
   return (
     <Modal
-      title="Edit Todo"
+      title="Todo Details"
       open={visible}
       onCancel={onCancel}
       footer={null}
