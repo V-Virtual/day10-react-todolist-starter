@@ -11,11 +11,18 @@ import {
   updateTodos
 } from '../apis/api';
 import TodoGenerator from './TodoGenerator';
-import {DeleteOutlined} from '@ant-design/icons';
+import TodoEdit from './TodoEdit';
+import {
+  DeleteOutlined,
+  EditOutlined
+} from '@ant-design/icons';
 
 const TodoGroup = () => {
   const {state, dispatch} = useContext(TodoContext);
   const [inputText, setInputText] = useState('');
+  const [editModalVisible, setEditModalVisible] = useState(false);
+  const [editingTodo, setEditingTodo] = useState(null);
+
 
   useEffect(() => {
     getTodos().then(response => {
@@ -38,6 +45,31 @@ const TodoGroup = () => {
     dispatch(action);
   }
 
+  function editTodo (id, e) {
+    e.stopPropagation();
+    const todoToEdit = state.find(todo => todo.id === id);
+    setEditingTodo(todoToEdit);
+    setEditModalVisible(true);
+  }
+
+  function handleEditFinish (values) {
+    if (editingTodo) {
+      const action = {type: 'EDIT', id: editingTodo.id, text: values.note};
+      dispatch(action);
+
+      // 同时更新后端
+      const updatedTodo = {...editingTodo, text: values.note};
+      updateTodos(editingTodo.id, updatedTodo).then(r => console.log(r.data));
+    }
+    setEditModalVisible(false);
+    setEditingTodo(null);
+  }
+
+  function handleEditCancel () {
+    setEditModalVisible(false);
+    setEditingTodo(null);
+  }
+
   return (
     <div className={'todo-group'}>
       <div className='todo-title'>Todo List</div>
@@ -54,16 +86,29 @@ const TodoGroup = () => {
                 {text}
               </div>
               <button
+                className='edit-button'
+                onClick={(e) => editTodo(id, e)}
+              >
+                <EditOutlined/>
+              </button>
+              <button
                 className='delete-button'
                 onClick={(e) => deleteTodo(id, e)}
               >
-                <DeleteOutlined />
+                <DeleteOutlined/>
               </button>
             </div>
           )
         })
       }
       <TodoGenerator/>
+
+      <TodoEdit
+        visible={editModalVisible}
+        onCancel={handleEditCancel}
+        onFinish={handleEditFinish}
+        initialValues={editingTodo}
+      />
     </div>
   );
 }

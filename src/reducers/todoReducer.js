@@ -31,6 +31,16 @@ export const todoReducer = (state, action) => {
       ];
     case 'DELETE':
       return state.filter(todo => todo.id !== action.id);
+    case 'EDIT':
+      return state.map(todo => {
+        if (todo.id === action.id) {
+          return {
+            ...todo,
+            text: action.text
+          };
+        }
+        return todo;
+      });
     default:
       return state;
   }
