@@ -30,16 +30,19 @@ const TodoEdit = ({ visible, onCancel, onFinish, initialValues = {} }) => {
   };
 
   const onReset = () => {
-    form.resetFields();
+    form.setFieldsValue({
+      text: initialValues.text,
+      done: initialValues.done
+    });
   };
 
   return (
     <Modal
-      title="Todo Details"
+      title="Edit Todo"
       open={visible}
       onCancel={onCancel}
       footer={null}
-      destroyOnClose
+      destroyOnHidden
     >
       <Form
         {...layout}

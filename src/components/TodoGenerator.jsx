@@ -5,6 +5,7 @@ import {
 import {TodoContext} from '../contexts/TodoContext';
 import './TodoList.css';
 import {addTodos} from '../apis/api';
+import { Button } from 'antd';
 
 const TodoGenerator = () => {
   const {state, dispatch} = useContext(TodoContext);
@@ -34,13 +35,15 @@ const TodoGenerator = () => {
              onChange={(e) => setInputText(e.target.value)}
              className={'todo-input'}
       />
-      <button
+      <Button
+        type="primary"
         onClick={addTodo}
         className={'todo-add-button'}
         disabled={!inputText.trim()}
+        style={{ marginLeft: 10 }}
       >
         add
-      </button>
+      </Button>
     </>
   )
 }
